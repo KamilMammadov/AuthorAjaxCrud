@@ -1,0 +1,131 @@
+﻿@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@using DemoApplication.Areas.Admin.ViewModels.Author
+@model UpdateViewModel
+
+
+
+
+
+<input type="checkbox" id="modal2" class="hidden">
+<div class="box_modal2">
+    <label for="modal2" class="closer">x</label>
+    <div class="text">
+        <div class="mb-3 row">
+            <label for="horizontalInput2" class="col-sm-2 col-form-label ad">updateName</label>
+            <div class="col-sm-10">
+                <input type="text" id="txtFirstName2" placeholder="Name">
+
+            </div>
+        </div>
+        <div class="mb-3 row">
+            <label for="horizontalInput2" class="col-sm-2 col-form-label ad">Surname</label>
+            <div class="col-sm-10">
+                <input type="text" id="txtLastName2" placeholder="Lastname">
+            </div>
+        </div>
+        <button class="btn btn-primary update-author">Yadda Saxla</button>
+        <a asp-route="admin-author-update" asp-route-id="@Model.Id"></a>
+
+
+    </div>
+</div>
+
+
+
+<style>
+    /* 기초 CSS 디자인 */
+    * {
+        box-sizing: border-box;
+    }
+
+    .ad {
+        width: 90px;
+    }
+
+    body {
+        margin: 0;
+    }
+
+    .hidden {
+        display: none;
+        visibility: hidden;
+    }
+
+    /* 본문 디자인 */
+
+    /* 버튼으로 사용할 라벨 디자인 */
+    .button {
+        font-size: 19px;
+        font-weight: 600;
+        vertical-align: middle;
+        cursor: pointer;
+    }
+
+    /* 모달 윈도우 디자인 */
+    .box_modal2 {
+        position: fixed;
+        display: block;
+        width: 400px;
+        height: 250px;
+        top: 50%;
+        left: 50%;
+        margin-top: -75px;
+        margin-left: -150px;
+        background: #d9e5e9;
+        border: 1px solid #386980;
+        overflow: hidden;
+        /* 아래 부분은 애니메이션 효과를 위한 부분 */
+        visibility: collapse;
+        opacity: 0.6;
+        filter: alpha(opacity=60);
+        -webkit-transition: all .2s ease;
+        transition: all .2s ease;
+        -webkit-transform: scale(0, 0);
+        -ms-transform: scale(0, 0);
+        transform: scale(0, 0);
+    }
+
+        .box_modal2:hover {
+            opacity: 1;
+            filter: alpha(opacity=100);
+        }
+
+    /* 닫기 버튼으로 사용할 라벨 */
+    .closer {
+        position: absolute;
+        width: 30px;
+        height: 30px;
+        top: 0;
+        right: 0;
+        background: #eee;
+        border-left: 1px solid #386980;
+        border-bottom: 1px solid #386980;
+        text-align: center;
+        line-height: 26px;
+        font-size: 16x;
+        cursor: pointer;
+    }
+
+    .text {
+        display: inline-block;
+        padding: 20px;
+    }
+
+        .text h3 {
+            font-size: 19px;
+            margin: 0;
+        }
+
+        .text p {
+            font-size: 13px;
+        }
+
+    /* 모달 윈도우가 팝업되는 코어 소스 */
+    input#modal2[type=checkbox]:checked ~ .box_modal2 {
+        visibility: visible;
+        -webkit-transform: scale(1, 1);
+        -ms-transform: scale(1, 1);
+        transform: scale(1, 1);
+    }
+</style>
+

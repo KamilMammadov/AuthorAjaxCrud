@@ -1,0 +1,59 @@
+﻿@using DemoApplication.Areas.Admin.ViewComponents
+@model List<ListItemViewModel>
+<div class="col-lg-12">
+    <div class="card">
+        <div class="card-header">
+            <h4 class="card-title">Authors</h4>
+        </div><!--end card-header-->
+
+        <partial name="Partials/_AddAuthorPartial" />
+      
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-striped mb-0">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>LastName</th>
+                            <th class="text-end">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody id="author-area">
+                        @foreach (var author in Model)
+                        {
+                            <tr id="row-@author.Id">
+                                <td class="name-td">@author.Name</td>
+                                <td class="last-td">@author.LastName</td>
+                                <td class="links-td text-end">
+                                    <a href="#"><i class="las la-pen text-secondary font-16"></i></a>
+                                    @*<partial name="Partials/_UpdateAuthorPartial" />*@
+
+                                    <div class="wrap">
+                                        <label for="modal2" class="btn">update</label>
+                                    </div>
+
+
+                                    <button data-id="row-@author.Id" type="button" onclick="deleteAuthor(this)">Delete</button>
+                                    <a asp-route="admin-author-delete" asp-route-id="@author.Id"></a>
+                                </td>
+                            </tr>
+                        }
+                        <tr id="row-template" class="d-none">
+                            <td class="name-td"></td>
+                            <td class="last-td"></td>
+                            <td class="links-td text-end">
+                                <a href="#"><i class="las la-pen text-secondary font-16"></i></a>
+
+                              @*  <partial name="Partials/_UpdateAuthorPartial"/>*@
+                               
+
+                                <button data-id="" onclick="deleteAuthor(this)" type="button">Delete</button>
+                                <a class="primary-add" asp-route="admin-author-delete" asp-route-id=""></a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table><!--end /table-->
+            </div><!--end /tableresponsive-->
+        </div><!--end card-body-->
+    </div><!--end card-->
+</div>
